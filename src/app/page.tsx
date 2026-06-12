@@ -5,6 +5,7 @@ import { createClient } from '@/lib/supabase'
 import { ParticipantScore } from '@/lib/types'
 
 import { DEFAULT_INFO } from '@/lib/defaults'
+import WcMatches from '@/components/WcMatches'
 
 export default function ScoreboardPage() {
   const [scores, setScores] = useState<ParticipantScore[]>([])
@@ -81,6 +82,7 @@ export default function ScoreboardPage() {
           <div className="content-area" dangerouslySetInnerHTML={{ __html: infoContent }} />
         </div>
       )}
+      <WcMatches />
       <div className="mb-6">
         <h1 className="text-2xl font-bold" style={{ color: 'var(--color-primary)' }}>
           Scoreboard
