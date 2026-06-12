@@ -19,7 +19,12 @@ export default function ScoreboardPage() {
     if (!container) return
     container.querySelectorAll('script').forEach(oldScript => {
       const newScript = document.createElement('script')
-      newScript.textContent = oldScript.textContent
+      if ((oldScript as HTMLScriptElement).src) {
+        newScript.src = (oldScript as HTMLScriptElement).src
+        newScript.async = true
+      } else {
+        newScript.textContent = oldScript.textContent
+      }
       oldScript.replaceWith(newScript)
     })
   }, [infoContent])
