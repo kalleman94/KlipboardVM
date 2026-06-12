@@ -91,10 +91,10 @@ export default function TipsPage() {
         setKnockoutEnabled(map['knockout_enabled'] === 'true')
         if (map['knockout_enabled'] === 'true') setActiveTab('knockout')
         setRandomEnabled(map['random_enabled'] === 'true')
-        // Manual locks override time-based locks
+        // Admin DB setting overrides time-based locks (false = explicit unlock)
         setLockStatus(prev => ({
-          groupLocked: prev?.groupLocked || map['group_locked'] === 'true',
-          knockoutLocked: prev?.knockoutLocked || map['knockout_locked'] === 'true',
+          groupLocked: map['group_locked'] === 'false' ? false : (prev?.groupLocked || map['group_locked'] === 'true'),
+          knockoutLocked: map['knockout_locked'] === 'false' ? false : (prev?.knockoutLocked || map['knockout_locked'] === 'true'),
           bonusLocked: map['bonus_locked'] === 'true',
           groupLockTime: prev?.groupLockTime ?? '',
           knockoutLockTime: prev?.knockoutLockTime ?? '',
