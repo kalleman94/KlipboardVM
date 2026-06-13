@@ -263,6 +263,11 @@ export default function AllasTipsPage() {
                                     <PointsBadge info={getMatchPointInfo(p, results[m.id], m)} />
                                   </div>
                                 </div>
+                                {results[m.id] && (
+                                  <div className="mt-1 text-xs text-center text-gray-400">
+                                   Facit: <span className="font-medium text-gray-500">{results[m.id].home_goals} – {results[m.id].away_goals}</span>
+                                  </div>
+                                )}
                               </div>
                             </div>
                           </div>
@@ -303,6 +308,11 @@ export default function AllasTipsPage() {
                                     <PointsBadge info={getMatchPointInfo(p, results[m.id], m)} />
                                   </div>
                                 </div>
+                                {results[m.id] && (
+                                  <div className="mt-1 text-xs text-center text-gray-400">
+                                    Facit: <span className="font-medium text-gray-500">{results[m.id].home_goals} – {results[m.id].away_goals}</span>
+                                  </div>
+                                )}
                                 {p?.predicted_winner && (
                                   <div className="mt-1 text-xs text-gray-500 text-center sm:text-left sm:pl-[calc(33.333%+0.75rem)]">
                                     → {p.predicted_winner}
